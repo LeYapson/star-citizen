@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dt5ff73bx1fxe"]
+
+[ext_resource type="PackedScene" uid="uid://d2ur87wf8q0ng" path="res://scenes/star.tscn" id="1_gjddx"]
+
+[sub_resource type="Environment" id="Environment_nagi4"]
+background_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2y7ts"]
+size = Vector2(20, 20)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_j58b2"]
+data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0, -10, 10, 0, -10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b6oh2"]
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nagi4")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.93279, 0.36042, 0, -0.36042, 0.93279, 0, 2.52216, 2.79237)
+
+[node name="RigidBody3D" parent="." instance=ExtResource("1_gjddx")]
+transform = Transform3D(-0.758407, -0.651781, 0, 0.651781, -0.758407, 0, 0, 0, 1, -0.111361, 0.451344, -1.82697)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00716126)
+mesh = SubResource("PlaneMesh_2y7ts")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_j58b2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97854, 0.61698, -2.72459)
+mesh = SubResource("BoxMesh_b6oh2")
