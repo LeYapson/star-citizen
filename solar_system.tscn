@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccq7hg4f0vnx"]
+
+[ext_resource type="PackedScene" uid="uid://dv1h1gcf43m5v" path="res://sun.tscn" id="1_ouf2j"]
+[ext_resource type="PackedScene" uid="uid://dm1qonta7quhk" path="res://planet.tscn" id="2_ip5c3"]
+
+[node name="solar_system" type="Node3D"]
+
+[node name="sun" parent="." instance=ExtResource("1_ouf2j")]
+
+[node name="planet" parent="." instance=ExtResource("2_ip5c3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.165, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.6293)

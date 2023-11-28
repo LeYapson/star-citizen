@@ -1,26 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://dm1qonta7quhk"]
+[gd_scene load_steps=6 format=3 uid="uid://dv1h1gcf43m5v"]
 
-[ext_resource type="Script" path="res://scripts/DirectionalLight3D.gd" id="1_d3oxf"]
-[ext_resource type="Script" path="res://scripts/CelestialBody.cs" id="1_vyqmc"]
+[ext_resource type="Script" path="res://CelestialBody.cs" id="1_f074v"]
+[ext_resource type="Script" path="res://DirectionalLight3D.cs" id="2_v7v0r"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_4h5eb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dgf0o"]
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6y3mo"]
 
-[node name="planet" type="RigidBody3D"]
-mass = 10.0
-script = ExtResource("1_vyqmc")
+[node name="sun" type="RigidBody3D"]
+mass = 1000.0
+script = ExtResource("1_f074v")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
 mesh = SubResource("SphereMesh_4h5eb")
 material = SubResource("StandardMaterial3D_dgf0o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("SphereShape3D_6y3mo")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-script = ExtResource("1_d3oxf")
+script = ExtResource("2_v7v0r")

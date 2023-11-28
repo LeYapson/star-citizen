@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="star citizen godot"
-config/features=PackedStringArray("4.1", "Forward Plus")
+run/main_scene="res://solar_system.tscn"
+config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*res://scripts/Globals.cs"
 
 [dotnet]
 
